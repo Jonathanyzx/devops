@@ -4,109 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Campus Notes - Learning Application</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            color: #1d3557;
-        }
-
-        .note {
-            background: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        .category {
-            color: #0077b6;
-            font-weight: bold;
-        }
-    </style>
+    <title>DevOps Project</title>
 </head>
 
 <body>
 
-    <h1>Welcome to Campus Notes</h1>
+    <h1>Hello World from DevOps!</h1>
 
-    <p>This is your learning homepage.</p>
+    <p>Learning Git branching and merging.</p>
 
-    <h2>Available Study Notes</h2>
+    <h2>Feature Branch Development</h2>
 
-    <div id="notes">
-        Loading notes...
-    </div>
+    <p>This content was developed on feature-homepage.</p>
 
-    <script>
+    <h2>Hello DevOps Application</h2>
 
-        async function loadNotes() {
+    <p>Click the link below to visit the Hello DevOps page.</p>
 
-            try {
-
-                // Request notes from the Express API
-                const response = await fetch("/api/notes");
-
-                if (!response.ok) {
-                    throw new Error("Failed to load notes");
-                }
-
-                // Convert API response into JavaScript data
-                const notes = await response.json();
-
-                console.log("Campus Notes:", notes);
-
-                // Get the HTML container
-                const container = document.getElementById("notes");
-
-                container.innerHTML = "";
-
-                // Display each note
-                notes.forEach(note => {
-
-                    const div = document.createElement("div");
-                    div.className = "note";
-
-                    const title = document.createElement("h3");
-                    title.textContent = note.title;
-
-                    const category = document.createElement("p");
-                    category.className = "category";
-                    category.textContent = "Category: " + note.category;
-
-                    const content = document.createElement("p");
-                    content.textContent = note.content;
-
-                    div.appendChild(title);
-                    div.appendChild(category);
-                    div.appendChild(content);
-
-                    container.appendChild(div);
-
-                });
-
-            } catch (error) {
-
-                console.error("Error:", error);
-
-                document.getElementById("notes").textContent =
-                    "Unable to load study notes.";
-
-            }
-
-        }
-
-        // Execute the function
-        loadNotes();
-
-    </script>
+    <a href="hello.html">Visit Hello DevOps</a>
 
 </body>
-
 </html>
