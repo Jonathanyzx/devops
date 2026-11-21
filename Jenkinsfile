@@ -1,55 +1,52 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = 'devops-app:2.0'
+        CONTAINER_NAME = 'devops-container'
+        HOST_PORT = '8081'
+    }
+
     stages {
-
-        stage('Install Dependencies') {
+        stage('Checkout') {
             steps {
-                echo 'Installing project dependencies...'
-                sh 'npm ci'
+                echo 'Retrieving project from GitHub...'
+                checkout scm
             }
         }
 
-        stage('Unit Testing') {
+        stage('Build') {
             steps {
-                echo 'Running unit tests...'
-                sh 'npm test -- tests/unit.test.js'
+                echo 'Building Docker image...'
+                sh 'docker build -t ${IMAGE_NAME} .'
             }
         }
 
-        stage('Integration Testing') {
+        stage('Test') {
             steps {
-                echo 'Running integration tests...'
-                sh 'npm test -- tests/integration.test.js'
+                echo 'Checking index.html...'
+                sh 'grep -F "Hello World from Jenkins!" index.html'
             }
         }
 
-        stage('SAST Security Scan') {
+        stage('Deploy') {
             steps {
-                echo 'Scanning source code for security vulnerabilities...'
-                sh '''
-                    docker run --rm \
-                    -v "$WORKSPACE:/src" \
-                    semgrep/semgrep \
-                    semgrep scan --config p/security-audit --error /src
-                '''
-            }
-        }
-
-        stage('Pipeline Summary') {
-            steps {
-                echo 'Unit tests, integration tests and SAST completed successfully!'
+                echo 'Deploying application to the target host...'
+                sh 'docker rm -f ${CONTAINER_NAME} || true'
+                sh 'docker run -d -p ${HOST_PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}'
+                echo 'Deployment completed!'
             }
         }
     }
 
     post {
         success {
-            echo 'SUCCESS: All tests and security scans passed!'
+            echo 'Deployment successful!'
+            echo 'Open http://localhost:8081 to view the application.'
         }
 
         failure {
-            echo 'FAILURE: Tests or security scanning detected a problem!'
+            echo 'Deployment failed. Check the Jenkins Console Output.'
         }
 
         always {
