@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            padding: 22px 35px;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        header p {
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+
+        .container {
+            padding: 30px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-bottom: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        .card h3 {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        .card h2 {
+            font-size: 30px;
+            margin-top: 12px;
+        }
+
+        .status {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .activity {
+            background: white;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .activity h2 {
+            margin-bottom: 15px;
+        }
+
+        .activity p {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DevOps Dashboard</h1>
+        <p>System Monitoring and Management</p>
+    </header>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h2>Welcome, Administrator!</h2>
+            <p>Here is your system overview.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>CPU Usage</h3>
+                <h2>35%</h2>
+                <p class="status">Normal</p>
+            </div>
+
+            <div class="card">
+                <h3>Memory Usage</h3>
+                <h2>62%</h2>
+                <p class="status">Healthy</p>
+            </div>
+
+            <div class="card">
+                <h3>Disk Usage</h3>
+                <h2>48%</h2>
+                <p class="status">Normal</p>
+            </div>
+
+            <div class="card">
+                <h3>Running Services</h3>
+                <h2>12</h2>
+                <p class="status">Active</p>
+            </div>
+
+        </div>
+
+        <div class="activity">
+            <h2>Recent Activities</h2>
+
+            <p>✓ System started successfully</p>
+            <p>✓ DevOps environment initialized</p>
+            <p>✓ Application deployment completed</p>
+            <p>✓ System health check passed</p>
+        </div>
+
+    </div>
+
+    <footer>
+        DevOps Dashboard | Linux Fundamentals Practical
+    </footer>
+
+</body>
+</html>

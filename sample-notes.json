@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to DevOps",
+    "category": "DevOps",
+    "content": "DevOps combines development and operations practices to improve collaboration and software delivery."
+  },
+  {
+    "id": 2,
+    "title": "Version Control with Git",
+    "category": "Git",
+    "content": "Git tracks changes to files and helps developers collaborate on projects."
+  },
+  {
+    "id": 3,
+    "title": "Working with JSON",
+    "category": "Programming",
+    "content": "JSON is a text format commonly used to exchange structured data between applications."
+  }
+]
